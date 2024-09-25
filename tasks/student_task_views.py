@@ -17,6 +17,7 @@ class StudentTaskListView(generics.ListAPIView):
     API view to retrieve all student tasks for the authenticated user.
     """
     serializer_class = StudentTaskSerializer
+    
 
     def get_queryset(self):
         """
