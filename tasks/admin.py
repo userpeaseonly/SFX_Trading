@@ -69,17 +69,17 @@ class StudentTaskImageInline(admin.TabularInline):
 # ------------------------------
 # Task Admin
 # ------------------------------
-@admin.register(Task)
-class TaskAdmin(admin.ModelAdmin):
-    list_display = ['title', 'description', 'topic', 'is_active', 'created_at', 'updated_at']
-    search_fields = ['title', 'description', 'topic__name']
-    list_filter = ['is_active', 'topic', 'created_at']
-    readonly_fields = ['created_at', 'updated_at']
-    ordering = ['-created_at']
+# @admin.register(Task)
+# class TaskAdmin(admin.ModelAdmin):
+#     list_display = ['title', 'description', 'topic', 'is_active', 'created_at', 'updated_at']
+#     search_fields = ['title', 'description', 'topic__name']
+#     list_filter = ['is_active', 'topic', 'created_at']
+#     readonly_fields = ['created_at', 'updated_at']
+#     ordering = ['-created_at']
 
-    def get_queryset(self, request):
-        queryset = super().get_queryset(request)
-        return queryset.select_related('topic')  # Optimize queryset by selecting related topic
+#     def get_queryset(self, request):
+#         queryset = super().get_queryset(request)
+#         return queryset.select_related('topic')  # Optimize queryset by selecting related topic
 
 
 # ------------------------------
