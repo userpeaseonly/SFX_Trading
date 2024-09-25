@@ -9,6 +9,7 @@ from .models import CustomUser
 from .serializers import UserInfoSerializer
 
 class UserExistsAPIView(APIView):
+    permission_classes = [permissions.AllowAny]
     @swagger_auto_schema(
         manual_parameters=[
             openapi.Parameter('telegram_id', openapi.IN_QUERY, description="Telegram ID", type=openapi.TYPE_STRING)
@@ -34,7 +35,7 @@ class UserExistsAPIView(APIView):
 
 class UserInfoAPIView(generics.RetrieveAPIView):
     serializer_class = UserInfoSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request, *args, **kwargs):
         user = self.request.user

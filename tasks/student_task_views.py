@@ -17,6 +17,7 @@ class StudentTaskListView(generics.ListAPIView):
     API view to retrieve all student tasks for the authenticated user.
     """
     serializer_class = StudentTaskSerializer
+    permission_classes = [IsAuthenticated]
     
 
     def get_queryset(self):
@@ -31,6 +32,7 @@ class StudentTaskDetailView(generics.RetrieveAPIView):
     API view to retrieve a specific student task by task_id for the authenticated user.
     """
     serializer_class = StudentTaskSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_object(self):
         """

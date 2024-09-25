@@ -1,6 +1,7 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 
 from .models import Topic, Task
@@ -13,6 +14,7 @@ class TopicListView(generics.ListAPIView):
     """
     queryset = Topic.objects.all()
     serializer_class = TopicSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class TopicDetailView(generics.RetrieveAPIView):
@@ -21,6 +23,7 @@ class TopicDetailView(generics.RetrieveAPIView):
     """
     queryset = Topic.objects.all()
     serializer_class = TopicSerializer
+    permission_classes = [IsAuthenticated]
     lookup_field = "id"
 
 
@@ -29,6 +32,7 @@ class TopicTasksListView(generics.ListAPIView):
     API view to retrieve all tasks for a given topic.
     """
     serializer_class = TaskSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         """
