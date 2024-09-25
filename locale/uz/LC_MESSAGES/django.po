@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-24 16:41+0500\n"
+"POT-Creation-Date: 2024-09-26 02:14+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: application/settings/defaults.py:187
-msgid "Uzbek"
-msgstr ""
-
 #: application/settings/defaults.py:188
+msgid "Uzbek"
+msgstr "O'zbekcha"
+
+#: application/settings/defaults.py:189
 msgid "English"
 msgstr "Inglizcha"
 
-#: application/settings/defaults.py:189
+#: application/settings/defaults.py:190
 msgid "Russian"
 msgstr "Ruscha"
 
@@ -141,6 +141,10 @@ msgstr "Rasm hajmi 10 MB dan oshmasligi kerak."
 msgid "Only .jpg, .jpeg, and .png formats are allowed."
 msgstr "Faqat .jpg, .jpeg va .png formatlariga ruxsat beriladi."
 
+#: templates/admin/base_site.html:5
+msgid "Django administration"
+msgstr ""
+
 #: users/models.py:10
 msgid "Phone Number"
 msgstr "Telefon Raqam"
@@ -168,6 +172,16 @@ msgstr "Admin"
 #: users/models.py:16
 msgid "Is Staff"
 msgstr "Xodim"
+
+#: users/models.py:31
+msgid "User"
+msgstr "Foydalanuvchi"
+
+#: users/models.py:32
+#, fuzzy
+#| msgid "User"
+msgid "Users"
+msgstr "Foydalanuvchi"
 
 #: venv/lib/python3.12/site-packages/django/contrib/messages/apps.py:15
 msgid "Messages"
@@ -1376,9 +1390,6 @@ msgstr ""
 #: venv/lib/python3.12/site-packages/modeltranslation/widgets.py:24
 msgid "None"
 msgstr ""
-
-#~ msgid "User"
-#~ msgstr "Foydalanuvchi"
 
 #~ msgid "Min Price"
 #~ msgstr "Minimal Narx"

@@ -26,3 +26,8 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return str(self.phone_number)
+    
+    class Meta:
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
+        ordering = ['-created_at']

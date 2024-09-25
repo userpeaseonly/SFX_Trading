@@ -6,6 +6,7 @@ coreschema==0.0.4
 Django==4.2.15
 django-cors-headers==4.4.0
 django-filter==24.3
+django-jazzmin==3.0.0
 django-modeltranslation==0.18.11
 django-phonenumber-field==8.0.0
 django-rest-swagger==2.2.0

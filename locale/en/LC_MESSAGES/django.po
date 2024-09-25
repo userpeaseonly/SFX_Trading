@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-24 16:41+0500\n"
+"POT-Creation-Date: 2024-09-26 02:13+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: application/settings/defaults.py:187
+#: application/settings/defaults.py:188
 msgid "Uzbek"
 msgstr ""
 
-#: application/settings/defaults.py:188
+#: application/settings/defaults.py:189
 msgid "English"
 msgstr "English"
 
-#: application/settings/defaults.py:189
+#: application/settings/defaults.py:190
 msgid "Russian"
 msgstr "Russian"
 
@@ -141,6 +141,10 @@ msgstr ""
 msgid "Only .jpg, .jpeg, and .png formats are allowed."
 msgstr ""
 
+#: templates/admin/base_site.html:5
+msgid "Django administration"
+msgstr ""
+
 #: users/models.py:10
 msgid "Phone Number"
 msgstr "Phone Number"
@@ -167,6 +171,14 @@ msgstr ""
 
 #: users/models.py:16
 msgid "Is Staff"
+msgstr ""
+
+#: users/models.py:31
+msgid "User"
+msgstr ""
+
+#: users/models.py:32
+msgid "Users"
 msgstr ""
 
 #: venv/lib/python3.12/site-packages/django/contrib/messages/apps.py:15

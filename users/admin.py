@@ -27,3 +27,10 @@ class CustomUserAdmin(UserAdmin):
     ordering = ("phone_number",)
 
 admin.site.register(CustomUser, CustomUserAdmin)
+
+
+# Customizing the Admin site headers
+admin.site.site_header = "SFX Administration"
+admin.site.site_title = "SFX Admin Portal"
+admin.site.index_title = "Welcome to the SFX Admin Dashboard"
+

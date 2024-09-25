@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-24 16:42+0500\n"
+"POT-Creation-Date: 2024-09-26 02:14+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,15 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: application/settings/defaults.py:187
+
+#: application/settings/defaults.py:188
 msgid "Uzbek"
 msgstr "узбекский"
 
-#: application/settings/defaults.py:188
+#: application/settings/defaults.py:189
 msgid "English"
 msgstr "Английский"
 
-#: application/settings/defaults.py:189
+#: application/settings/defaults.py:190
 msgid "Russian"
 msgstr "Русский"
 
@@ -142,6 +143,10 @@ msgstr "Размер изображения не должен превышать
 msgid "Only .jpg, .jpeg, and .png formats are allowed."
 msgstr "Допускаются только форматы .jpg, .jpeg и .png."
 
+#: templates/admin/base_site.html:5
+msgid "Django administration"
+msgstr ""
+
 #: users/models.py:10
 msgid "Phone Number"
 msgstr "Номер телефона"
@@ -169,6 +174,16 @@ msgstr "Администратор"
 #: users/models.py:16
 msgid "Is Staff"
 msgstr "Персонал"
+
+#: users/models.py:31
+msgid "User"
+msgstr "Пользователь"
+
+#: users/models.py:32
+#, fuzzy
+#| msgid "User"
+msgid "Users"
+msgstr "Пользователь"
 
 #: venv/lib/python3.12/site-packages/django/contrib/messages/apps.py:15
 msgid "Messages"
@@ -205,7 +220,6 @@ msgstr "Номер страницы меньше 1"
 #: venv/lib/python3.12/site-packages/django/core/paginator.py:54
 msgid "That page contains no results"
 msgstr "Страница не содержит результатов"
-
 
 #: venv/lib/python3.12/site-packages/django/core/validators.py:22
 msgid "Enter a valid value."
@@ -1423,9 +1437,6 @@ msgstr ""
 #: venv/lib/python3.12/site-packages/modeltranslation/widgets.py:24
 msgid "None"
 msgstr ""
-
-#~ msgid "User"
-#~ msgstr "Пользователь"
 
 #~ msgid "Min Price"
 #~ msgstr "Минимальная цена"

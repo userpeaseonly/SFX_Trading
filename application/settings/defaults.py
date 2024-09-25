@@ -28,6 +28,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # Application definition
 
 INSTALLED_APPS = [
+    # django themes
+    'jazzmin',
+    
     # django apps
     'drf_yasg',
     'django.contrib.admin',
@@ -237,4 +240,27 @@ CORS_ALLOW_HEADERS = [
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken', 'Access-Control-Allow-Origin']
 
 CORS_ALLOW_CREDENTIALS = True
+
+JAZZMIN_SETTINGS = {
+    # "site_title": "SFX Administration",
+    # "site_header": "SFX Admin",
+    # "welcome_sign": "Welcome to the SFX Admin Panel",
+    # "topmenu_links": [
+    #     {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+    # ],
+    # "show_sidebar": True,
+    # "navigation_expanded": True,
+    # "hide_apps": [],
+    # "hide_models": [],
+    # "order_with_respect_to": ["auth", "users", "tasks"],
+    # "custom_css": None,
+    # "custom_js": None,
+    # "site_logo": "your_logo.png",
+    # "site_icon": None,
+    # "related_modal_active": False,
+    "custom_css": "custom/admin.css",
+    "custom_js": "custom/admin.js",
+    "show_ui_builder": True,
+    "language_chooser": True,
+}
 
