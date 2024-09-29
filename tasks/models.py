@@ -20,6 +20,7 @@ class Task(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='tasks', verbose_name=_('Topic'))
     title = models.CharField(max_length=255, verbose_name=_('Title'), unique=True)
     description = models.TextField(verbose_name=_('Description'))
+    image = models.ImageField(upload_to='task_images/', validators=[validate_image], verbose_name=_('Image'))
     is_active = models.BooleanField(default=True, verbose_name=_('Is Active'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created At'))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Updated At'))
