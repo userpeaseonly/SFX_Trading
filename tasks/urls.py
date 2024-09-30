@@ -1,6 +1,6 @@
 # urls.py
 from django.urls import path
-from .safe_views import TopicListView, TopicDetailView, TopicTasksListView
+from .safe_views import TopicListView, TopicDetailView, TopicTasksListView, StudentCountTaskStatusView
 from .student_task_views import StudentTaskListView, StudentTaskDetailView, StudentTaskCreateAPIView
 
 
@@ -22,5 +22,8 @@ urlpatterns = [
 
     # Create a new student task with image uploads
     path('student-tasks/submit/', StudentTaskCreateAPIView.as_view(), name='student-task-create'),
+    
+    # Student tasks
+    path('count-status/', StudentCountTaskStatusView.as_view(), name='student-task-count-status'),
     
 ]

@@ -2,9 +2,10 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 
-from .models import Topic, Task
+from .models import Topic, Task, StudentTask
 from .serializers import TopicSerializer, TaskSerializer
 
 
@@ -52,3 +53,25 @@ class TopicTasksListView(generics.ListAPIView):
         topic_data["tasks"] = response_data
         return Response(topic_data, status=status.HTTP_200_OK)
 
+
+class StudentCountTaskStatusView(APIView):
+    """
+    API view to update the status of a task for a student.
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        """
+        Get the task status for a student.
+        """
+        student = request.user
+        
+        count_studenttask = StudentTask.objects.filter(student=student, status=StudentTask.StatusChoices.APPROVED).count()        
+        count_all_tasks = Task.objects.all().count()
+        
+        response_data = {
+            "student": student.full_name,
+            "all_tasks": count_all_tasks,
+            "completed_tasks": count_studenttask,
+        }
+        return Response(response_data, status=status.HTTP_200_OK)
