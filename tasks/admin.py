@@ -66,6 +66,30 @@ class StudentTaskImageInline(admin.TabularInline):
     display_image.short_description = _('Uploaded Image')
 
 
+class StudentTasksStatusInline(admin.TabularInline):
+    model = StudentTask
+    extra = 0
+    fields = ['all_tasks', 'completed_tasks', 'rejected_tasks', 'pending_tasks']
+    readonly_fields = ['all_tasks', 'completed_tasks', 'rejected_tasks', 'pending_tasks']
+    can_delete = False
+    
+    def all_tasks(self, obj):
+        return Task.objects.all().count()
+    
+    def completed_tasks(self, obj):
+        return StudentTask.objects.filter(student=obj.student, status=StudentTask.StatusChoices.APPROVED).count()
+    
+    def rejected_tasks(self, obj):
+        return StudentTask.objects.filter(student=obj.student, status=StudentTask.StatusChoices.REJECTED).count()
+    
+    def pending_tasks(self, obj):
+        return StudentTask.objects.filter(student=obj.student, status=StudentTask.StatusChoices.PENDING).count()
+    
+    all_tasks.short_description = _('All Tasks')
+    completed_tasks.short_description = _('Completed Tasks')
+    rejected_tasks.short_description = _('Rejected Tasks')
+    pending_tasks.short_description = _('Pending Tasks')
+
 # ------------------------------
 # Task Admin
 # ------------------------------
@@ -87,7 +111,7 @@ class StudentTaskImageInline(admin.TabularInline):
 # ------------------------------
 @admin.register(StudentTask)
 class StudentTaskAdmin(admin.ModelAdmin):
-    list_display = ['student', 'task', 'status', 'created_at', 'updated_at', 'view_images_link']
+    list_display = ['student', 'full_name', 'task', 'status', 'created_at', 'updated_at', 'view_images_link', 'all_tasks', 'completed_tasks', 'rejected_tasks', 'pending_tasks']
     list_filter = ['status', 'task__topic', 'created_at']
     search_fields = ['student__full_name', 'task__title']
     readonly_fields = ['created_at', 'updated_at']
@@ -100,9 +124,30 @@ class StudentTaskAdmin(admin.ModelAdmin):
 
     view_images_link.short_description = 'View Images'
 
+    # Custom aggregate methods
+    def all_tasks(self, obj):
+        return Task.objects.count()
+
+    def completed_tasks(self, obj):
+        return StudentTask.objects.filter(student=obj.student, status=StudentTask.StatusChoices.APPROVED).count()
+
+    def rejected_tasks(self, obj):
+        return StudentTask.objects.filter(student=obj.student, status=StudentTask.StatusChoices.REJECTED).count()
+
+    def pending_tasks(self, obj):
+        return StudentTask.objects.filter(student=obj.student, status=StudentTask.StatusChoices.PENDING).count()
+
+    all_tasks.short_description = _('All Tasks')
+    completed_tasks.short_description = _('Completed Tasks')
+    rejected_tasks.short_description = _('Rejected Tasks')
+    pending_tasks.short_description = _('Pending Tasks')
+
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
         return queryset.select_related('student', 'task').prefetch_related('student_task_images')  # Optimize queryset
+
+    def full_name(self, obj):
+        return obj.student.full_name
 
 
 # ------------------------------

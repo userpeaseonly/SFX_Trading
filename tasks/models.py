@@ -59,6 +59,9 @@ class StudentTask(models.Model):
         unique_together = ('student', 'task')
         verbose_name = _('Student Task')
         verbose_name_plural = _('Student Tasks')
+    
+    def completed_tasks(self):
+        return StudentTask.objects.filter(student=self.student, status=StudentTask.StatusChoices.APPROVED).count()
         
 class StudentTaskImage(models.Model):
     student_task = models.ForeignKey(StudentTask, on_delete=models.CASCADE, related_name='student_task_images', verbose_name=_('Student Task'))
