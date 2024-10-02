@@ -51,6 +51,18 @@ class StudentTaskImageSerializer(ModelSerializer):
             raise ValidationError("Only .jpg, .jpeg, and .png formats are allowed.")
         return value
 
+
+
+class StudentTaskSerializerV1(ModelSerializer):
+    """
+    Serializer for the StudentTask model.
+    """
+    images = StudentTaskImageSerializer(many=True, read_only=True, source='student_task_images')
+    class Meta:
+        model = StudentTask
+        fields = "__all__"
+
+
 class StudentTaskCreateSerializer(ModelSerializer):
     images = serializers.ListField(
         child=serializers.ImageField(), write_only=True, required=True,

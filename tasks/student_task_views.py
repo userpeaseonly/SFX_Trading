@@ -9,7 +9,7 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 
 from .models import StudentTask, StudentTaskImage, Task
-from .serializers import StudentTaskSerializer, StudentTaskCreateSerializer
+from .serializers import StudentTaskSerializer, StudentTaskSerializerV1, StudentTaskCreateSerializer
 
 
 class StudentTaskListView(generics.ListAPIView):
@@ -42,6 +42,21 @@ class StudentTaskDetailView(generics.RetrieveAPIView):
         task = get_object_or_404(Task, id=task_id)
         return get_object_or_404(StudentTask, student=self.request.user, task=task)
 
+
+class StudentTaskDetailViewV1(generics.RetrieveAPIView):
+    """
+    API view to retrieve a specific student task by task_id for the authenticated user.
+    """
+    serializer_class = StudentTaskSerializerV1
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        """
+        Override to ensure that the student task belongs to the authenticated user.
+        """
+        task_id = self.kwargs['task_id']
+        task = get_object_or_404(Task, id=task_id)
+        return get_object_or_404(StudentTask, student=self.request.user, task=task)
 
 class StudentTaskCreateAPIView(generics.CreateAPIView):
     """
