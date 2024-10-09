@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 
 from .models import Topic, Task, StudentTask
-from .serializers import TopicSerializer, TaskSerializer
+from .serializers import TopicSerializer, TaskSerializer, TaskWithStudentTaskSerializer
 
 
 class TopicListView(generics.ListAPIView):
@@ -75,3 +75,19 @@ class StudentCountTaskStatusView(APIView):
             "completed_tasks": count_studenttask,
         }
         return Response(response_data, status=status.HTTP_200_OK)
+
+
+class TopicTasksWithStudentTasksView(generics.ListAPIView):
+    serializer_class = TaskWithStudentTaskSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # Get the topic based on the URL parameter
+        topic_id = self.kwargs['id']
+        topic = get_object_or_404(Topic, id=topic_id)
+        # Return all tasks that belong to the topic
+        return Task.objects.filter(topic=topic)
+
+    def get_serializer_context(self):
+        # Include the request in the serializer context
+        return {'request': self.request}

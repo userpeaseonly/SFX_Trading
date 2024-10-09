@@ -107,3 +107,21 @@ class StudentTaskCreateSerializer(ModelSerializer):
         StudentTaskImage.objects.bulk_create(image_instances)
 
         return student_task
+
+
+class TaskWithStudentTaskSerializer(serializers.ModelSerializer):
+    status = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Task
+        fields = ['id', 'title', 'description', 'image', 'is_active', 'created_at', 'updated_at', 'status']
+
+    def get_status(self, obj):
+        # Get the authenticated user from context
+        user = self.context['request'].user
+        # Try to find the related StudentTask for the user and task
+        try:
+            student_task = StudentTask.objects.get(student=user, task=obj)
+            return student_task.status
+        except StudentTask.DoesNotExist:
+            return None  # No related StudentTask, return null
