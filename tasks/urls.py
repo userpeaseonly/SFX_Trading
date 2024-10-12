@@ -1,6 +1,6 @@
 # urls.py
 from django.urls import path
-from .safe_views import TopicListView, TopicDetailView, TopicTasksListView, StudentCountTaskStatusView, TopicTasksWithStudentTasksView
+from .safe_views import TopicListView, TopicDetailView, TopicTasksListView, StudentCountTaskStatusView, TopicTasksWithStudentTasksView, AllTopicTasksWithStudentTasksView
 from .student_task_views import StudentTaskListView, StudentTaskDetailView, StudentTaskDetailViewV1, StudentTaskCreateAPIView
 
 
@@ -31,4 +31,7 @@ urlpatterns = [
 
     # Get all topics with tasks and student tasks
     path('topics/<int:id>/tasks-with-student-tasks/', TopicTasksWithStudentTasksView.as_view(), name='tasks-with-student-tasks'),
+    
+    # Get all topics with tasks and student tasks
+    path('topics/tasks-with-student-tasks/', AllTopicTasksWithStudentTasksView.as_view(), name='tasks-with-student-tasks'),
 ]
